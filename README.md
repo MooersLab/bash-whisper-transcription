@@ -48,6 +48,6 @@ fi
 
    
 ## Testing
-Tested in a zsh shell in a iterm3 terminal on a 2018 MacBookPro running macOS 13.6 and running the Python3.11 from macports. 
-Should work with Python 3.8 to 3.11.
+Tested in a zsh shell in a iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 
+Should work with Python 3.8 to 3.11. Edit accordingly.
 

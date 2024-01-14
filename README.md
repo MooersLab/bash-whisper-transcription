@@ -4,7 +4,7 @@
 I need to transcribe audio 1-2 times a day automatically.
 I could reuse previously issued commands, but the bash function below makes this redundant task easier.
 This bash function reduces the effort required to apply OpenAI's whisper to the transcription of audio files.
-Files of the following types are supported: 
+Files of the following types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm.
 
 I store this function in a `.bashFunctions` file in my home directory.
 I source this file from my `.zshrc` file.

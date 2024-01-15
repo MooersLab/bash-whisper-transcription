@@ -1,3 +1,7 @@
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.2&color=brightcolor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+
 # bash-whisper-transcription: Bash function to ease the transcription of audio files to text with OpenAI's whisper
 
 ## Introduction

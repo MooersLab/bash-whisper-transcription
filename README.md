@@ -46,6 +46,17 @@ fi
 4. Enter `wh311 <audiofile>` at the prompt in the terminal. You have to be in the directory with the audio file or provide the path to the audio file.
 5. Wait 1 minute per 6 minutes of audio recording. Faster transcriptions are possible with a Nvidia GPU.
 
+## Optional audio notification when finished
+A audio message indicating that that transcription has finished would be helpful here because the transcription is such a slow process.
+Unfortunatley, the the code for generating a audio message varies between operating system and revise on external software.
+See this [stack overflow post](https://stackoverflow.com/questions/16573051/sound-alarm-when-code-finishes) for numerous options: 
+
+For macOS, add the following to the command:
+
+```bash
+&& say 'Your audio transcription has finished.'
+```
+
    
 ## Testing
 Tested in a zsh shell in a iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 

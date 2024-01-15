@@ -57,6 +57,22 @@ For macOS, add the following to the command on the second to last line in the sc
 && say 'Your audio transcription has finished.'
 ```
 Now, that is really convenient!!
+
+## Optional removal of the audio recording and opening of transcript
+
+If you have no future need for the audio, you might as well remove it after that transcription is finished.
+Below is an example command.
+
+```bash
+wh311 230114_0846.mp3 && rm -rf 230114_0846.mp3
+```
+
+You might as well open the transcript with a text editor (textmate is this case) while you are at it.
+
+```bash
+wh311 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
+```
+
    
 ## Testing
 Tested in a zsh shell in a iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 

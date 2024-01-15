@@ -60,5 +60,5 @@ Now, that is really convenient!!
    
 ## Testing
 Tested in a zsh shell in a iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 
-Should work with Python 3.8 to 3.11. Edit accordingly.
+Should work with Python 3.8 to 3.11. Edit the second to last line in the function accordingly.
 

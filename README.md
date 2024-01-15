@@ -51,7 +51,7 @@ A audio message indicating that that transcription has finished would be helpful
 Unfortunatley, the the code for generating a audio message varies between operating system and revise on external software.
 See this [stack overflow post](https://stackoverflow.com/questions/16573051/sound-alarm-when-code-finishes) for numerous options: 
 
-For macOS, add the following to the command:
+For macOS, add the following to the command on the second to last line in the script file:
 
 ```bash
 && say 'Your audio transcription has finished.'

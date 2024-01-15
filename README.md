@@ -56,7 +56,7 @@ For macOS, add the following to the command on the second to last line in the sc
 ```bash
 && say 'Your audio transcription has finished.'
 ```
-
+Now, that is really convenient!!
    
 ## Testing
 Tested in a zsh shell in a iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 

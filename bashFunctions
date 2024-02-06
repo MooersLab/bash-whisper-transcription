@@ -7,12 +7,12 @@ echo "You may need to reset the path to the Python interperter that you want to 
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage: wh311 230113_1649.mp3"
+  echo "Usage: wh3 230113_1649.mp3"
   return 2
 elif [ $# -gt 1 ]; then
   echo 1>&2 "$0: too many arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage: wh311 230113_1649.map3"
+  echo "Usage: wh3 230113_1649.map3"
 fi
 /opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt
 }

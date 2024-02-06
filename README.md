@@ -72,13 +72,13 @@ If you have no future need for the audio file, you might as well remove it after
 Below is an example command.
 
 ```bash
-wh311 230114_0846.mp3 && rm -rf 230114_0846.mp3
+wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3
 ```
 
 You can automatically open the transcript with a text editor (textmate is this case) when the transcription is finished.
 
 ```bash
-wh311 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
+wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
 ```
 
    

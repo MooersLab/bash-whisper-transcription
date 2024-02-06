@@ -17,7 +17,7 @@ Files of the following types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and 
 I store this function in a `.bashFunctions` file in my home directory.
 I source this file from my `.zshrc` file.
 The function is loaded whenever I open a new terminal session.
-I enter `wh311 <audiofile filename>` in the directory with the audio file and wait 1 minute per 6 minutes of audio recording.
+I enter `wh3 <audiofile filename>` in the directory with the audio file and wait 1 minute per 6 minutes of audio recording.
 
 The output is a plain text file.
 You will have to post-process the transcribed text because the text is returned in one big block.
@@ -27,7 +27,7 @@ You may have to install several software packages (e.g., openai-whisper, Rust, f
 You can use pip to install openai-whisper.
 
 ```bash
-wh311()
+wh3()
 {
 echo "Run whisper using Python3.11 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
@@ -51,7 +51,7 @@ fi
 1. Copy the code above when displayed in the RAW form or download the bashFunctions file.
 2. Customize the path for the Python interpreter you want to use.
 3. Source the bashFunctions file in a terminal.
-4. Enter `wh311 <audiofile filename>` at the prompt in the terminal. You have to be in the directory with the audio file or provide the path to the audio file.
+4. Enter `wh3 <audiofile filename>` at the prompt in the terminal. You have to be in the directory with the audio file or provide the path to the audio file.
 5. Wait 1 minute per 6 minutes of audio recording. Faster transcriptions are possible with a Nvidia GPU.
 
 ## Optional audio notification when finished

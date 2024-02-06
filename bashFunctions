@@ -1,4 +1,4 @@
-wh311()
+wh3()
 {
 echo "Run whisper using Python3.11 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."

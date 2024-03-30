@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.4&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.5&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -70,7 +70,7 @@ Now, that is convenient!!
 
 ## Optional removal of the audio recording and opening of transcript
 
-If you will no longer need the audio file, you might as well remove it after the transcription is finished.
+If you no longer need the audio file, you might as well remove it after the transcription.
 Below is an example command.
 
 ```bash
@@ -82,6 +82,18 @@ You can automatically open the transcript with a text editor (textmate is this c
 ```bash
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
 ```
+
+## Write one sentence per line
+
+This variant of the script rewrites the transcript with one sentence per line by using GNU awk (a.k.a gawk).
+Most of the transcribed sentences end with a period, so the gawk substitution is effective about at least 99% of the time.
+This format of one sentence per line greatly eases deleting unwanted lines using Control-k keyboard shortcut for cut line in most text editors.
+This variant also removes the mp3 and the initial text files after applying text replacements would replacem.py.
+
+```bash
+/opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./replacem.py $1.txt && rm $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && mate $1.txtcorrected.txt && $1.mp3 && say 'Your audio transcription has finished.'
+```
+
 
 ## Trouble shooting
 

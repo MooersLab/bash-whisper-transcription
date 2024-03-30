@@ -83,17 +83,30 @@ You can automatically open the transcript with a text editor (textmate is this c
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
 ```
 
-## Write one sentence per line
+## Optional text replacements
 
-This variant of the script rewrites the transcript with one sentence per line by using GNU awk (a.k.a gawk).
-Most of the transcribed sentences end with a period, so the gawk substitution is effective about at least 99% of the time.
-This format of one sentence per line greatly eases deleting unwanted lines using Control-k keyboard shortcut for cut line in most text editors.
+The processing of the transcript opens up the opportunity to make text replacements.
+The script `replacem.py` is a master script.
+It calls additional Python files as modules that contain a list of text replacements.
+
+In my opinion, the most important file is the contractions.py file because it will automatically replace all English contractions.
+People 100 years from now will probably not be familiar with them, so what is the point in using something that will confuse future readers?
+
+The other Python files support using voice commands to insert code or expand acronyms.
+The simplest example would be the voice command "new paragraph" to insert two newline characters to start a paragraph in the block format.
+This command is very helpful for breaking up your transcript into logical units.
+Whisper cannot do this on its own.
+
+## Optional write one sentence per line
+
+This script variant rewrites the transcript with one sentence per line using GNU awk (a.k.a gawk).
+Most transcribed sentences end with a period, so the gawk substitution is adequate at least 99% of the time.
+This format of one sentence per line greatly eases deleting unwanted lines using Control-k keyboard shortcut for the cut line command in most text editors.
 This variant also removes the mp3 and the initial text files after applying text replacements would replacem.py.
 
 ```bash
 /opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./replacem.py $1.txt && rm $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && mate $1.txtcorrected.txt && $1.mp3 && say 'Your audio transcription has finished.'
 ```
-
 
 ## Trouble shooting
 

@@ -2,7 +2,7 @@
 
 from contractions import replaceContractions
 from punctuations import replacePunctuations
-from latex import replaceLaTeX
+from domain-specific import replace
 from xtaleq import replaceXtalEq
 from pathlib import Path
 import sys
@@ -25,11 +25,8 @@ Note that you have to define a new variable that
 is mapped to the returned processed text.
 """
 
-bltxt = replaceBlaine(txt)
 retxt = replaceContractions(bltxt)
 ptxt = replacePunctuations(retxt)
-prtxt = replaceProtocols(ptxt)
-latxt = replaceLaTeX(prtxt)
 eqtxt = replaceXtalEq(latxt)
 #protxt = replaceProjects(eqtxt)
 my_file.write(eqtxt)

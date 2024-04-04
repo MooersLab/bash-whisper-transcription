@@ -3,9 +3,9 @@ wh3()
 echo "Run whisper using Python3.11 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interperter you want to use."
+echo "You may need to reset the path to the Python interpreter you want to use."
 echo "Uses gawk to return one sentence per line to ease deleting whisper's rubbish."
-echo "Uses sed to remove leasing whitespace on each line."
+echo "Uses sed to remove leading whitespace on each line."
 echo "Uses TextMate to open the processed transcript."
 echo "Uses the terminal app 'say' on Mac OS to announce when the transcribe is ready for you."
 if [ $# -lt 1 ]; then

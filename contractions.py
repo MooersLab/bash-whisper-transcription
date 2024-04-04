@@ -96,7 +96,6 @@ def replaceContractions(txt):
     txt = re.sub("you'll","you will", txt, flags=re.IGNORECASE)
     txt = re.sub("you're","you are", txt, flags=re.IGNORECASE)
     txt = re.sub("you've","you have", txt, flags=re.IGNORECASE)
-    
     txt = re.sub("new paragraph.","\n \n", txt, flags=re.IGNORECASE)
     return txt
         

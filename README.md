@@ -26,7 +26,7 @@ The following file types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm
 - Uses the terminal app 'say' on Mac OS to announce when the transcribe is ready for you.
 
 
-## Installation
+## Installation and use
 
 I store this function in a `.bashFunctions` file in my home directory.
 I source this file from my `.zshrc` file.
@@ -63,7 +63,7 @@ fi
 }
 ```
 
-## Usage
+
 1. Copy the code above when displayed in the RAW form or download the bashFunctions file.
 2. Customize the path for the Python interpreter you want to use.
 3. Source the bashFunctions file in a terminal.

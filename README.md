@@ -5,7 +5,7 @@
 # Bash and Python functions to improve the transcription of audio files to text with OpenAI's whisper
 
 ## Introduction
-I transcribe audio files that I have generated during my daily commutes using a Digital Voice Recorder (DVR).
+I transcribe audio files generated during my daily commutes using a Digital Voice Recorder (DVR).
 DVRs work better than cell phones for capturing human speech at a distance.
 
 I could reuse previously issued commands in a terminal, but the bash function below makes this redundant task easier.

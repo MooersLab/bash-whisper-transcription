@@ -2,7 +2,7 @@
 
 from contractions import replaceContractions
 from punctuations import replacePunctuations
-from domain-specific import replace
+from domain-specific import replaceBiochemistry, replaceVirology, replaceProgramming
 from xtaleq import replaceXtalEq
 from pathlib import Path
 import sys

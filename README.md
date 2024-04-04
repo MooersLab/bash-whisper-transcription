@@ -16,6 +16,15 @@ The following file types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm
 
 ## Features
 
+- Run whisper using Python3.11 on an audio file to transcribe it into text.
+- Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm.
+- The base model works with CPUs. Requires 1 minute per 6 minutes of audio.
+- You may need to reset the path to the Python interpreter you want to use.
+- Uses gawk to return one sentence per line to ease deleting whisper's hallucination rubbish text.
+- Uses sed to remove leading whitespace on each line.
+- Uses TextMate to open the processed transcript.
+- Uses the terminal app 'say' on Mac OS to announce when the transcribe is ready for you.
+
 
 ## Installation
 

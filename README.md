@@ -63,7 +63,7 @@ fi
 }
 ```
 
-## Installation and Usage
+## Usage
 1. Copy the code above when displayed in the RAW form or download the bashFunctions file.
 2. Customize the path for the Python interpreter you want to use.
 3. Source the bashFunctions file in a terminal.

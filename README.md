@@ -14,6 +14,11 @@ I use the recommended base model with my CPUs.
 The word error rate (WER) is low.
 The following file types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm.
 
+## Features
+
+
+## Installation
+
 I store this function in a `.bashFunctions` file in my home directory.
 I source this file from my `.zshrc` file.
 The function is loaded whenever I open a new terminal session.

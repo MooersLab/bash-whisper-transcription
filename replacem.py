@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 
-from blaine import replaceBlaine
 from contractions import replaceContractions
 from punctuations import replacePunctuations
-from protocols import replaceProtocols
-#from projects import replaceProjects
 from latex import replaceLaTeX
 from xtaleq import replaceXtalEq
 from pathlib import Path

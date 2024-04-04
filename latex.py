@@ -1,7 +1,7 @@
 import re
 
 def replaceLaTeX(txt):
-    itemizedList=r"""\\begin{itemize}
+    itemized list=r"""\\begin{itemize}
     \\item
     \\item
     \\item

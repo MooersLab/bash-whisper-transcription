@@ -7,6 +7,8 @@ def replaceContractions(txt):
     txt = re.sub("it's", "it is", txt, flags=re.IGNORECASE)
     txt = re.sub("'cause","because", txt, flags=re.IGNORECASE)
     txt = re.sub("'twas","it was", txt, flags=re.IGNORECASE)
+    txt = re.sub("ain't","am not", txt, flags=re.IGNORECASE)
+    txt = re.sub("aren't","are not", txt, flags=re.IGNORECASE)
     txt = re.sub("can't","cannot", txt, flags=re.IGNORECASE)
     txt = re.sub("could've","could have", txt, flags=re.IGNORECASE)
     txt = re.sub("couldn't","could not", txt, flags=re.IGNORECASE)
@@ -48,7 +50,7 @@ def replaceContractions(txt):
     txt = re.sub("shan't","shall not", txt, flags=re.IGNORECASE)
     txt = re.sub("she'd","she had", txt, flags=re.IGNORECASE)
     txt = re.sub("she'll","she will", txt, flags=re.IGNORECASE)
-    txt = re.sub("she's","she is", txt, flags=re.IGNORECASE) 
+    txt = re.sub("she's","she is", txt, flags=re.IGNORECASE)
     txt = re.sub("should've","should have", txt, flags=re.IGNORECASE)
     txt = re.sub("shouldn't","should not", txt, flags=re.IGNORECASE)
     txt = re.sub("somebody's","somebody is", txt, flags=re.IGNORECASE)
@@ -98,4 +100,4 @@ def replaceContractions(txt):
     txt = re.sub("you've","you have", txt, flags=re.IGNORECASE)
     txt = re.sub("new paragraph.","\n \n", txt, flags=re.IGNORECASE)
     return txt
-        
+

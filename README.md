@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.1&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.2&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -12,7 +12,15 @@ I could reuse previously issued commands in a terminal, but the bash function be
 This bash function reduces the effort required to apply OpenAI's whisper to the transcription of audio files.
 I use the recommended base model with my CPUs.
 The word error rate (WER) is low.
-The following file types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm.
+The following file types are supported. 
+
+- mp3 
+- mp4 
+- mpeg
+- mpga
+- m4a
+- wav
+- webm
 
 ## Features
 
@@ -39,7 +47,7 @@ I often only reuse snippets of text and then delete the transcript.
 
 You may have to install several software packages (e.g., openai-whisper, Rust, ffpmeg, torch).
 You can use pip to install `openai-whisper`.
-It works with Python3.9 and Python3.11.
+It works in my hands with Python3.9 and Python3.11.
 I use the latter.
 
 ```bash
@@ -48,7 +56,7 @@ wh3()
 echo "Run whisper using Python3.11 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interpreter that you want to use."
+echo "You may need to reset the path to the Python interpreter you want to use."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
@@ -62,7 +70,6 @@ fi
 /opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt
 }
 ```
-
 
 1. Copy the code above when displayed in the RAW form or download the bashFunctions file.
 2. Customize the path for the Python interpreter you want to use.
@@ -91,7 +98,7 @@ Below is an example command.
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3
 ```
 
-You can automatically open the transcript with a text editor (textmate is this case) when the transcription is finished.
+You can automatically open the transcript with a text editor (TextMate, in this case) when the transcription is finished.
 
 ```bash
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
@@ -101,9 +108,9 @@ wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
 
 The processing of the transcript opens up the opportunity to make text replacements.
 The script `replacem.py` is a master script.
-It calls additional Python files as modules that contain a list of text replacements.
+It calls additional Python modules, which contain lists of text replacements.
 
-In my opinion, the most important file is the contractions.py file because it will automatically replace all English contractions.
+The most important file is the contractions.py file because it automatically replaces all English contractions, which are unacceptable in formal nonfiction writing.
 People 100 years from now will probably not be familiar with them, so what is the point in using something that will confuse future readers?
 
 The other Python files support using voice commands to insert code or expand acronyms.
@@ -115,17 +122,17 @@ Whisper cannot do this on its own.
 
 This script variant rewrites the transcript with one sentence per line using GNU awk (a.k.a gawk).
 Most transcribed sentences end with a period, so the gawk substitution is adequate at least 99% of the time.
-This format of one sentence per line greatly eases deleting unwanted lines using Control-k keyboard shortcut for the cut line command in most text editors.
-This variant also removes the mp3 and the initial text files after applying text replacements would replacem.py.
+The one sentence per line format greatly facilitates deleting unwanted lines using the Control-k keyboard shortcut for the cut line command in most text editors.
+This variant also removes the *.mp3 and the initial text files after applying text replacements would *replacem.py*.
 
 ```bash
 /opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./replacem.py $1.txt && rm $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && mate $1.txtcorrected.txt && $1.mp3 && say 'Your audio transcription has finished.'
 ```
 
-## Trouble shooting
+## Troubleshooting
 
-If you use home brew as a package manager and if an upgrade to home brew leaves you with the error message 
-`Library Not Loaded - libmbedcrypto.14.dylib` when you run `wh3`, then run the following commands in the order that is listed:
+If you use homebrew as a package manager and if an upgrade to homebrew leaves you with the error message 
+`Library Not Loaded - libmbedcrypto.14.dylib` when you run `wh3`, then run the following commands in the order listed:
 
 
 ```python
@@ -137,9 +144,16 @@ brew install scrcpy
 ```
    
 ## Testing
-I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from macports. 
+I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from Macports. 
 Should work with Python 3.8 to 3.11. 
 Edit the path to the Python interpreter in the second to last line in the function as needed.
+
+## Update history
+
+|Version      | Changes                                                                                                                                    | Date                 |
+|:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|
+| Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 11          |
+
 
 ## Sources of funding
 

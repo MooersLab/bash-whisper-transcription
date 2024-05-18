@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.2&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.3&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -98,7 +98,7 @@ Below is an example command.
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3
 ```
 
-You can automatically open the transcript with a text editor (TextMate, in this case) when the transcription is finished.
+When the transcription is finished, you can automatically open the transcript with a text editor (TextMate, in this case).
 
 ```bash
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
@@ -152,7 +152,7 @@ Edit the path to the Python interpreter in the second to last line in the functi
 
 |Version      | Changes                                                                                                                                    | Date                 |
 |:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|
-| Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 11          |
+| Version 0.6.3 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 18          |
 
 
 ## Sources of funding

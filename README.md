@@ -74,7 +74,7 @@ fi
 1. Copy the code above when displayed in the RAW form or download the bashFunctions file.
 2. Customize the path for the Python interpreter you want to use.
 3. Source the bashFunctions file in a terminal.
-4. Enter wh3 audiofile filename> at the terminal prompt. You must be in the directory with the audio file or provide the path to the audio file.
+4. Enter `wh3 audiofile filename>` at the terminal prompt. You must be in the directory with the audio file or provide the path to the audio file.
 5. Wait 1 minute per 6 minutes of audio recording. Faster transcriptions are possible with a Nvidia GPU.
 
 ## Optional audio notification when finished
@@ -152,8 +152,8 @@ Edit the path to the Python interpreter in the second to last line in the functi
 
 |Version      | Changes                                                                                                                                    | Date                 |
 |:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|
-| Version 0.6.3 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 18          |
-
+| Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 14          |
+| Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
 
 ## Sources of funding
 

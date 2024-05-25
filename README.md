@@ -151,7 +151,7 @@ Edit the path to the Python interpreter in the second to last line in the functi
 ## Update history
 
 |Version      | Changes                                                                                                                                    | Date                 |
-|:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|
+|:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|
 | Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 14          |
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
 

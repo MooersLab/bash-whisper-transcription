@@ -53,21 +53,22 @@ I use the latter.
 ```bash
 wh3()
 {
-echo "Run whisper using Python3.11 on a <audiofile> to transcribe it into text."
+echo "Run whisper using Python3.12 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interpreter you want to use."
+echo "You may need to reset the path to the Python interpreter to one that you want to use."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage: wh3 230113_1649.mp3"
+  echo "Usage: wh311 230113_1649.mp3"
   return 2
 elif [ $# -gt 1 ]; then
   echo 1>&2 "$0: too many arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage: wh3 230113_1649.mp3"
+  echo "Usage: wh311 230113_1649.mp3"
 fi
-/opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt
+/opt/local/bin/python3.12 -c "import whisper;model = whisper.load_model('base.en');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./scripts/replacem.py $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && sed 's/ //' $1-clean.txt > $1-ready.txt  && mate $1-ready.txt && say 'Your audio transcription has finished.'
+echo "Function stored in ~/.bashFunctions3."
 }
 ```
 

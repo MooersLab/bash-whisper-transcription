@@ -153,6 +153,10 @@ I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running ma
 Should work with Python 3.8 to 3.12. 
 Edit the path to the Python interpreter in the second to last line in the function as needed.
 
+## Enhancements
+
+The script should be expanded so you are notified audibly when the script stops prematurely.
+
 ## Update history
 
 |Version      | Changes                                                                                                                                    | Date                 |

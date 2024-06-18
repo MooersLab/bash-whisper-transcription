@@ -68,7 +68,7 @@ elif [ $# -gt 1 ]; then
   echo "Usage: wh311 230113_1649.mp3"
 fi
 /opt/local/bin/python3.12 -c "import whisper;model = whisper.load_model('base.en');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./scripts/replacem.py $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && sed 's/ //' $1-clean.txt > $1-ready.txt  && mate $1-ready.txt && say 'Your audio transcription has finished.'
-echo "Function stored in ~/.bashFunctions3."
+echo "Function wh3() is stored in ~/.bashFunctions3."
 }
 ```
 

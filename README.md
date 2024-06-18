@@ -90,19 +90,14 @@ For macOS, add the following to the command on the second to last line in the sc
 ```
 Now, that is convenient!!
 
-## Optional removal of the audio recording and opening of transcript
+## Optional removal of the audio recording 
+
 
 If you no longer need the audio file, you might as well remove it after the transcription.
 Below is an example command.
 
 ```bash
 wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3
-```
-
-When the transcription is finished, you can automatically open the transcript with a text editor (TextMate, in this case).
-
-```bash
-wh3 230114_0846.mp3 && rm -rf 230114_0846.mp3 && mate 230114_0846.mp3.txt &
 ```
 
 ## Optional text replacements
@@ -127,8 +122,17 @@ The one sentence per line format greatly facilitates deleting unwanted lines usi
 This variant also removes the *.mp3 and the initial text files after applying text replacements would *replacem.py*.
 
 ```bash
-/opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./replacem.py $1.txt && rm $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && mate $1.txtcorrected.txt && $1.mp3 && say 'Your audio transcription has finished.'
+/opt/local/bin/python3.11 -c "import whisper;model = whisper.load_model('base');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./replacem.py $1.txt && rm $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && say 'Your audio transcription has finished.'
 ```
+
+## Optional opening of transcript
+When the transcription is finished, you can automatically open the transcript with a text editor (TextMate in this case).
+You are now ready to apply any edits required to make the transcript understandable to your future self in six months.
+
+```bash
+/opt/local/bin/python3.12 -c "import whisper;model = whisper.load_model('base.en');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./scripts/replacem.py $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1-clean.txt && sed 's/ //' $1-clean.txt > $1-ready.txt  && mate $1-ready.txt && say 'Your audio transcription has finished.'
+```
+
 
 ## Troubleshooting
 
@@ -145,16 +149,17 @@ brew install scrcpy
 ```
    
 ## Testing
-I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 from Macports. 
-Should work with Python 3.8 to 3.11. 
+I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running macOS 13.6 and Python3.11 and Python3.12 from Macports. 
+Should work with Python 3.8 to 3.12. 
 Edit the path to the Python interpreter in the second to last line in the function as needed.
 
 ## Update history
 
 |Version      | Changes                                                                                                                                    | Date                 |
-|:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|
+|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|
 | Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 14          |
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
+| Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
 
 ## Sources of funding
 

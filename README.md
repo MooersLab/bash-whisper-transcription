@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.3&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.5&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -48,7 +48,7 @@ I often only reuse snippets of text and then delete the transcript.
 You may have to install several software packages (e.g., openai-whisper, Rust, ffpmeg, torch).
 You can use pip to install `openai-whisper`.
 It works in my hands with Python3.9 and Python3.11.
-I use the latter.
+I used the latter.
 
 ```bash
 wh3()
@@ -77,6 +77,45 @@ echo "Function wh3() is stored in ~/.bashFunctions3."
 3. Source the bashFunctions file in a terminal.
 4. Enter `wh3 audiofile filename>` at the terminal prompt. You must be in the directory with the audio file or provide the path to the audio file.
 5. Wait 1 minute per 6 minutes of audio recording. Faster transcriptions are possible with a Nvidia GPU.
+
+## Installation with Python3.12
+
+I ran into trouble when installing whisper with python3.12.
+It is not in anaconda.
+I created a conda env with python3.12.
+
+Pip installed numpy 2.0.2 but whiper required 1.26.
+I had to uninstall numpy.
+
+I had to reinstall numpy==1.26.
+pip install numpy==1.26
+pip install openai-whisper
+
+I modified the bash script to activate and deactivate a conda-env.
+
+```bash
+wh312()
+{
+echo "Run whisper using Python3.12 on a <audiofile> to transcribe it into text."
+echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
+echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
+echo "You may need to reset the path to the Python interpreter to one that you want to use."
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Supply the mp3 file stem."
+  echo "Usage:  230113_1649.mp3"
+  return 2
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Supply the mp3 file stem."
+  echo "Usage: wh312 230113_1649.mp3"
+fi
+conda activate whisper-env && python3.12 -c "import whisper;model = whisper.load_model('base.en');result = model.transcribe('$1');print(result['text'])" > $1.txt && ./scripts/replacem.py $1.txt && gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1.clean.txt && sed 's/ //' $1.clean.txt > $1.ready.txt  && mate $1.ready.txt  && conda deactivate && say 'Your audio transcription has finished.'
+rm -rf $1.txt && rm -rf $1.txtcorrected.txt && rm -rf $1.clean.tex && rm -rf $1.ready.tex  && say 'The intermediate files have been removed.'
+echo "Function stored in ~/.bashFunctions3." 
+}
+```
+
 
 ## Optional audio notification when finished
 An audio message indicating that transcription has finished is helpful here because the transcription is a slow process.
@@ -164,6 +203,7 @@ The script should be expanded so you are notified audibly when the script stops 
 | Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 14          |
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
 | Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
+| Version 0.6.5 |  Added wh312 () function.                                                                                                                | 2024 November 30     |
 
 ## Sources of funding
 

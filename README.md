@@ -24,7 +24,7 @@ The following file types are supported.
 
 ## Features
 
-- Run whisper using Python3.11 on an audio file to transcribe it into text.
+- Run whisper using Python3.12 on an audio file to transcribe it into text.
 - Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm.
 - The base model works with CPUs. Requires 1 minute per 6 minutes of audio.
 - You may need to reset the path to the Python interpreter you want to use.
@@ -47,8 +47,8 @@ I often only reuse snippets of text and then delete the transcript.
 
 You may have to install several software packages (e.g., openai-whisper, Rust, ffpmeg, torch).
 You can use pip to install `openai-whisper`.
-It works in my hands with Python3.9 and Python3.11.
-I used the latter.
+It works in my hands with Python3.9, Python3.11, and Python3.12.
+
 
 ```bash
 wh3()
@@ -80,16 +80,19 @@ echo "Function wh3() is stored in ~/.bashFunctions3."
 
 ## Installation with Python3.12
 
-I ran into trouble when installing whisper with python3.12.
-It is not in anaconda.
+I ran into trouble when installing openai-whisper with python3.12.
+It is not in Anaconda.
 I created a conda env with python3.12.
 
-Pip installed numpy 2.0.2 but whiper required 1.26.
+I pip installed numpy 2.0.2 but whisper required 1.26.
 I had to uninstall numpy.
 
-I had to reinstall numpy==1.26.
+I had to reinstall `numpy==1.26`.
+
+```bash
 pip install numpy==1.26
 pip install openai-whisper
+```
 
 I modified the bash script to activate and deactivate a conda-env.
 
@@ -99,7 +102,7 @@ wh312()
 echo "Run whisper using Python3.12 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interpreter to one that you want to use."
+echo "You may need to reset the path to the Python interpreter to one you want to use."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
@@ -192,9 +195,9 @@ I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running ma
 Should work with Python 3.8 to 3.12. 
 Edit the path to the Python interpreter in the second to last line in the function as needed.
 
-## whp312 ()
+## whp312 () for effortless transcription
 
-This variant of the script moves move the audio file off the DVR and to the folder where the transcription occurs.
+This variant of the script moves the audio file off the DVR and to the folder where the transcription occurs.
 Now, I just have to plug in the DVR and enter the name of the bash function `whp312` from anywhere in the terminal.
 The audio file is automatically deleted after the transcription occurs.
 

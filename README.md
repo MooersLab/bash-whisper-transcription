@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.5&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.6&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -224,7 +224,7 @@ The script should be expanded so you are notified audibly when the script stops 
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
 | Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
 | Version 0.6.5 |  Added wh312 () function.                                                                                                                | 2024 November 30     |
-| Version 0.6.6 |  Added wh3p12 () function. Makes transcription even easier.                                                                              | 2024 December 14     |
+| Version 0.6.6 |  Added whp312 () function. Makes transcription even easier.                                                                              | 2024 December 14     |
 
 
 ## Sources of funding

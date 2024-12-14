@@ -192,7 +192,27 @@ I tested it in a zsh shell in an iTerm2 terminal on a 2018 MacBookPro running ma
 Should work with Python 3.8 to 3.12. 
 Edit the path to the Python interpreter in the second to last line in the function as needed.
 
-## Enhancements
+## whp312 ()
+
+This variant of the script moves move the audio file off the DVR and to the folder where the transcription occurs.
+Now, I just have to plug in the DVR and enter the name of the bash function `whp312` from anywhere in the terminal.
+The audio file is automatically deleted after the transcription occurs.
+
+```bash
+whp312()
+{
+echo "Run whisper using Python3.12 on a <audiofile> to transcribe it into text."
+echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
+echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
+echo "You may need to reset the path to the Python interpreter to one you want to use."
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S") 
+cd ~/transcriptions &&
+mv /Volumes/IC\ RECORDER/REC_FILE/FOLDER01/*.mp3 ${timestamp}.mp3 &&
+conda activate whisper-env && python3.12 -c "import whisper;model = whisper.load_model('base.en');result = model.transcribe('${timestamp}.mp3');print(result['text'])" > ${timestamp}.txt && ./scripts/replacem.py ${timestamp}.txt && gawk '{gsub(/\./,"." ORS)} 1' ${timestamp}.txtcorrected.txt > ${timestamp}.clean.txt && sed 's/ //' ${timestamp}.clean.txt > ${timestamp}.ready.txt  && mate ${timestamp}.ready.txt  && conda deactivate && say 'Your audio transcription has finished.'
+rm -rf ${timestamp}.txt && rm -rf ${timestamp}.txtcorrected.txt && rm -rf ${timestamp}.clean.tex && rm -rf ${timestamp}.mp3  && say 'The intermediate files have been removed.'
+echo "Function stored in ~/.bashFunctions3." 
+}
+```
 
 The script should be expanded so you are notified audibly when the script stops prematurely.
 
@@ -204,6 +224,8 @@ The script should be expanded so you are notified audibly when the script stops 
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
 | Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
 | Version 0.6.5 |  Added wh312 () function.                                                                                                                | 2024 November 30     |
+| Version 0.6.6 |  Added wh3p12 () function. Makes transcription even easier.                                                                              | 2024 December 14     |
+
 
 ## Sources of funding
 

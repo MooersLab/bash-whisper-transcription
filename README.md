@@ -51,7 +51,7 @@ It works in my hands with Python3.9, Python3.11, and Python3.12.
 
 
 ```bash
-wh3()
+wh311()
 {
 echo "Run whisper using Python3.12 on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."

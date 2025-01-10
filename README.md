@@ -84,7 +84,7 @@ I ran into trouble when installing openai-whisper with python3.12.
 It is not in Anaconda.
 I created a conda env with python3.12.
 
-I pip installed numpy 2.0.2 but whisper required 1.26.
+I pip installed numpy 2.0.2, but whisper required 1.26.
 I had to uninstall numpy.
 
 I had to reinstall `numpy==1.26`.

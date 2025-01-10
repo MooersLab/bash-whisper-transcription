@@ -39,7 +39,7 @@ The following file types are supported.
 I store this function in a `.bashFunctions` file in my home directory.
 I source this file from my `.zshrc` file.
 The function is loaded whenever I open a new terminal session.
-I enter `wh3 <audiofile filename>` in the directory with the audio file and wait 1 minute per 6 minutes of audio recording.
+I enter `wh311 <audiofile filename>` in the directory with the audio file and wait 1 minute per 6 minutes of audio recording.
 
 The output is a plain text file.
 You will have to post-process the transcribed text because the text is returned in one big block.

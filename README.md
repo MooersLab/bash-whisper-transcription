@@ -219,6 +219,55 @@ echo "Function stored in ~/.bashFunctions3."
 
 The script should be expanded so you are notified audibly when the script stops prematurely.
 
+## Backup plan when in Python dependency hell
+
+This script utilizes the whisper executable installed with homebrew rather than using python to import the whisper module.
+
+```bash
+whb()
+{
+echo "Run home brew installed whisper executable on a <audiofile> to transcribe it into text."
+echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
+echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
+echo "You may need to reset the path to the Python interperter to one that you want to use."
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Supply the mp3 file stem."
+  echo "Usage:  230113_1649.mp3"
+  return 2
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Supply the mp3 file stem."
+  echo "Usage: wh3 230113_1649.mp3"
+fi
+cd /Users/blaine/transcriptions
+whisper $1.mp3 --model base.en --output_format txt > $1.txt
+./scripts/replacem.py $1.txt
+gawk '{gsub(/\./,"." ORS)} 1' $1.txtcorrected.txt > $1.clean.txt
+sed 's/ //' $1.clean.txt > $1.ready.txt
+mate $1.ready.txt
+espeak 'Your audio transcription has finished.'
+rm -rf $1.txt 
+rm -rf $1.txtcorrected.txt 
+rm -rf $1.clean.tex 
+rm -rf $1.ready.tex 
+espeak 'The intermediate files have been removed.'
+echo "Function stored in ~/.bashFunctions3."
+}
+```
+
+Note that I had to use `espeak` in place of the nicer `say` because `say` was not working on my Apple silicon computer.
+The voices for `espeak` sound like a robot from TV shows in the 1960s.
+The voice is available for the program `say` are more pleasant to listen to.
+
+
+## Cleaning up transcript further
+
+You can issue an elaborate prompt to clean up the transcript further utilizing GPT or Claude 3.5 Sonnet.
+I will post the prompt that I am using on the repo `chatbot-reformat-my-transcript`.
+
+
+
 ## Update history
 
 |Version      | Changes                                                                                                                                    | Date                 |

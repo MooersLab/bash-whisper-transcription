@@ -221,8 +221,12 @@ The script should be expanded so you are notified audibly when the script stops 
 
 ## Backup plan when in Python dependency hell
 
+Sometimes pip and conda mishandle the dependences of whisper. 
+A fallback plan is to use whisper.cpp instead of Python.
+I have noticed that `whisper.cpp` much faster than the Python version.
+
 ### whisper from brew
-This script utilizes the whisper executable installed with homebrew rather than using python to import the whisper module.
+This script utilizes the whisper executable installed with homebrew rather than using Python to import the whisper module.
 
 ```bash
 whb()
@@ -230,7 +234,7 @@ whb()
 echo "Run home brew installed whisper executable on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interperter to one that you want to use."
+echo "You may need to reset the path to the Python interpreter to one that you want to use."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
@@ -261,7 +265,7 @@ The path to the `say` binary has to be used on Mac OS Sequoia.
 
 ### whisper.ccp compiled from source
 
-I was able to download [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and compile it from source code because I had the proper toolchain in place.
+I could download [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and compile it from source code because I had the proper toolchain.
 I already had `ffmpeg` installed.
 I was restricted to using the base model.
 
@@ -310,7 +314,7 @@ I will post the prompt that I am using on the repo `chatbot-reformat-my-transcri
 | Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
 | Version 0.6.5 |  Added wh312 () function.                                                                                                                | 2024 November 30     |
 | Version 0.6.6 |  Added whp312 () function. Makes transcription even easier.                                                                              | 2024 December 14     |
-
+| Version 0.6.7 |  Added whcpp () function. Makes transcription even easier.                                                                              | 2025 March 6     |
 
 ## Sources of funding
 

@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.6&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=bash-whisper-transcription&message=0.6.7&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -234,16 +234,16 @@ whb()
 echo "Run home brew installed whisper executable on a <audiofile> to transcribe it into text."
 echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
 echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
-echo "You may need to reset the path to the Python interpreter to one that you want to use."
+echo "You may need to reset the path to the Python interpreter to one you want to use."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage:  230113_1649.mp3"
+  echo "Usage: wh3 230113_1649"
   return 2
 elif [ $# -gt 1 ]; then
   echo 1>&2 "$0: too many arguments"
   echo "Supply the mp3 file stem."
-  echo "Usage: wh3 230113_1649.mp3"
+  echo "Usage: wh3 230113_1649"
 fi
 cd /Users/blaine/transcriptions
 whisper $1.mp3 --model base.en --output_format txt > $1.txt
@@ -263,9 +263,9 @@ echo "Function stored in ~/.bashFunctions3."
 
 The path to the `say` binary has to be used on Mac OS Sequoia.
 
-### whisper.ccp compiled from source
+### whisper.cpp compiled from source
 
-I could download [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and compile it from source code because I had the proper toolchain.
+I could download [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and compile it from the source code because I had the proper toolchain.
 I already had `ffmpeg` installed.
 I was restricted to using the base model.
 
@@ -278,13 +278,13 @@ whcpp () {
 	then
 		echo "$0: not enough arguments" >&2
 		echo "Supply the mp3 file stem."
-		echo "Usage:  230113_1649"
+		echo "Usage: whcpp 230113_1649"
 		return 2
 	elif [ $# -gt 1 ]
 	then
 		echo "$0: too many arguments" >&2
 		echo "Supply the mp3 file stem."
-		echo "Usage: whc 230113_1649"
+		echo "Usage: whcpp 230113_1649"
 	fi
 	cd ~/transcriptions
 	ffmpeg -i $1.mp3 -ac 1 -ar 16000 $1.wav
@@ -311,7 +311,7 @@ I will post the prompt that I am using on the repo `chatbot-reformat-my-transcri
 |:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|
 | Version 0.6.2 |  Added update table and minor edits for improved clarity in README.md                                                                    | 2024 May 14          |
 | Version 0.6.3 |  Minor edits for improved clarity in README.md                                                                                           | 2024 May 18          |
-| Version 0.6.4 |  Fixed filename typo in script that lead to the opening of a blank file in textmate.                                                     | 2024 June 18         |
+| Version 0.6.4 |  Fixed filename typo in script that leads to a blank file opening in textmate.                                                     | 2024 June 18         |
 | Version 0.6.5 |  Added wh312 () function.                                                                                                                | 2024 November 30     |
 | Version 0.6.6 |  Added whp312 () function. Makes transcription even easier.                                                                              | 2024 December 14     |
 | Version 0.6.7 |  Added whcpp () function. Makes transcription even easier.                                                                              | 2025 March 6     |

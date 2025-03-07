@@ -221,6 +221,7 @@ The script should be expanded so you are notified audibly when the script stops 
 
 ## Backup plan when in Python dependency hell
 
+### whisper from brew
 This script utilizes the whisper executable installed with homebrew rather than using python to import the whisper module.
 
 ```bash
@@ -251,14 +252,46 @@ rm -rf $1.txt
 rm -rf $1.txtcorrected.txt 
 rm -rf $1.clean.tex 
 rm -rf $1.ready.tex 
-espeak 'The intermediate files have been removed.'
+/usr/bin/say 'The intermediate files have been removed.'
 echo "Function stored in ~/.bashFunctions3."
 }
 ```
 
-Note that I had to use `espeak` in place of the nicer `say` because `say` was not working on my Apple silicon computer.
-The voices for `espeak` sound like a robot from TV shows in the 1960s.
-The voice is available for the program `say` are more pleasant to listen to.
+The path to the `say` binary has to be used on Mac OS Sequoia.
+
+### whisper.ccp compiled from source
+
+I was able to download [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and compile it from source code because I had the proper toolchain in place.
+I already had `ffmpeg` installed.
+I was restricted to using the base model.
+
+```bash
+whcpp () {
+	echo "Run whisper using whisper.cpp on a <audiofile> to transcribe it into text."
+	echo "Works with file types:  mp3, mp4, mpeg, mpga, m4a, wav, and webm."
+	echo "The base model works with CPUs. Requires 1 minute per 6 minutes of audio."
+	if [ $# -lt 1 ]
+	then
+		echo "$0: not enough arguments" >&2
+		echo "Supply the mp3 file stem."
+		echo "Usage:  230113_1649"
+		return 2
+	elif [ $# -gt 1 ]
+	then
+		echo "$0: too many arguments" >&2
+		echo "Supply the mp3 file stem."
+		echo "Usage: whc 230113_1649"
+	fi
+	cd ~/transcriptions
+	ffmpeg -i $1.mp3 -ac 1 -ar 16000 $1.wav
+	/Users/blaine/software/whisper.cpp/build/bin/whisper-cli -l en -m /Users/blaine/software/whisper.cpp/models/ggml-base.bin -nt -otxt -f $1.wav
+	/Users/blaine/transcriptions/scripts/replacem.py $1.wav.txt
+	gawk '{gsub(/\./,"." ORS)} 1' $1.wav.txtcor.txt > $1.wav.clean.txt
+	sed 's/ //' $1.wav.clean.txt > $1.wav.ready.txt
+	mate $1.wav.ready.txt
+	/usr/bin/say 'Your audio transcription has finished.'
+```
+
 
 
 ## Cleaning up transcript further
